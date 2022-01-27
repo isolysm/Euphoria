@@ -13,4 +13,7 @@ configurations.register("compileClasspath")
 
 preprocess {
     "1.8.9"(10809, "srg")
+    "1.12.2"(11202, "srg")
+    "1.17.1"(11701, "srg")
+    "1.18.1"(11801, "srg")
 }
