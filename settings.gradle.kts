@@ -31,10 +31,19 @@ pluginManagement {
 
 rootProject.buildFileName = "root.gradle.kts"
 
-listOf(
+val euphoriaVersions = listOf(
+    //"1.7.10",
     "1.8.9",
-    "1.18.1"
-).forEach { version ->
+    //"1.9.4",
+    //"1.10.2",
+    //"1.11.2",
+    //"1.12.2",
+    //"1.15.2",
+    //"1.16.5",
+    "1.17.1",
+    "1.18.1",
+)
+euphoriaVersions.forEach { version ->
     include(":$version:")
     project(":$version:").apply {
         projectDir = file("version/$version")
