@@ -21,4 +21,7 @@ preprocess {
     // Fabric legacy and current versions
     val mc11701 = createNode("1.17.1", 11701, "yarn")
     val mc11801 = createNode("1.18.1", 11801, "yarn")
+
+    fabric11801.link(fabric11701)
+    forge11701.link(fabric11701)
 }

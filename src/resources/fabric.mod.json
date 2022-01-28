@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "euphoria",
+  "version": "${version}",
+  "environment": "*",
+  "authors": [
+    "MyosynLLC"
+  ],
+  "depends": {
+    "fabricloader": "*"
+  },
+  "description": "A base modding library.",
+  "custom": {
+    "modmenu": {
+      "badges": [ "library" ]
+    }
+  }
+}

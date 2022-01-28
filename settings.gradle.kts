@@ -41,7 +41,7 @@ val euphoriaVersions = listOf(
     //"1.15.2",
     //"1.16.5",
     "1.17.1",
-    "1.18.1",
+    "1.18.1"
 )
 euphoriaVersions.forEach { version ->
     include(":$version:")
