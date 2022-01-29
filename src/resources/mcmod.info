@@ -1,8 +1,8 @@
 [
   {
-    "modid": "${id}",
-    "name": "${name}",
-    "description": "Core library for Ulypes modifications",
+    "modid": "myosyn-euphoria",
+    "name": "Euphoria",
+    "description": "Core library for Myosyn/Ulypse modifications",
     "version": "${version}",
     "mcversion": "${mcversion}",
     "url": "",

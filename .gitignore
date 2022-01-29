@@ -1,9 +1,25 @@
-/build/
-/.gradle
-/.idea
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
 *.iml
-.env
-database.db
-/bin/
-/.vscode/
-.idea
+.idea/**
+!.idea/copyright/**
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+/gradle.properties
+.DS_Store
