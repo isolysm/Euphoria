@@ -2,44 +2,35 @@ pluginManagement {
     repositories {
         mavenLocal()
         gradlePluginPortal()
+        jcenter()
         mavenCentral()
         google()
         maven("https://jitpack.io")
         maven("https://maven.fabricmc.net")
-        maven {
-            name = "sonatype"
-            url = uri("https://oss.sonatype.org/content/repositories/snapshots")
-        }
         flatDir {
             dirs=setOf(file("../../libs"))
         }
     }
     resolutionStrategy {
-        eachPlugin {
+        eachPlugin{
             when (requested.id.id) {
-                "com.replaymod.preprocess" -> (
-                        useModule("com.github.replaymod:preprocessor:${requested.version}")
-                        )
-                "net.minecraftforge.gradle.forge" -> (
-                    useModule("com.github.Skytils:ForgeGradle:${requested.version}")
-                        )
-                "org.spongepowered.mixin" -> (
-                    useModule("com.github.Skytils:mixingradle:${requested.version}")
-                        )
+                "com.replaymod.preprocess" -> {
+                    useModule("com.github.replaymod.preprocessor:${requested.version}")
+                }
             }
         }
     }
 }
 
+rootProject.name = "template"
 rootProject.buildFileName = "root.gradle.kts"
 
 listOf(
-    "1.8.9"
+    "1.18.1"
 ).forEach { version ->
     include(":$version")
     project(":$version").apply {
-        projectDir = file("versions/$version")
+        projectDir = file("version/$version")
         buildFileName = "../../build.gradle"
     }
-
 }
