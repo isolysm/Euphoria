@@ -3,7 +3,7 @@
 plugins {
     kotlin("jvm") version Dependencies.KOTLIN apply false
     id("fabric-loom") version Dependencies.FABRIC_LOOM apply false
-    id("com.replaymod.preprocess") Dependencies. "0ab22d2"
+    id("com.replaymod.preprocess") version "7746c47"
 }
 
 configurations.register("compileClasspath")

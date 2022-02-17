@@ -6,8 +6,8 @@ object Dependencies {
 
     // Other dependencies
     const val FABRIC_LOOM = "0.11-SNAPSHOT"
-    const val PREPROCESSOR = "0ab22d23a3bd695f3d219421cf27b82f9385b5dc"
     const val KTOR = "1.6.7"
+    const val PREPROCESSOR = "7746c471309b9f179fbabd58c2032f7145622953"
     const val KOTLINX_SERIALIZATION = "1.3.2"
     const val KOTLINX_COROUTINES = "1.6.0"
 }

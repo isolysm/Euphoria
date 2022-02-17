@@ -1,32 +1,30 @@
-import com.replaymod.gradle.preprocess.PreprocessTask
+// **NOT STOLEN, JUST BORROWED** from Sk1erLLC please Sychic don't cave my skull in
 
-buildscript{
-    def mcVersionStr = project.name.tokenize('-')[0]
-    def (major, minor, patch) = mcVersionStr.tokenize('.')
-    def mcVersion = "${major}${minor.padLeft(2, '0')}${(patch ?: '').padLeft(2, '0')}" as int
+buildscript {
+    def mcVersion
+    def (major, minor, patch) = project.name.tokenize('-')[0].tokenize('.')
+    mcVersion = "${major}${minor.padLeft(2, '0')}${(patch ?: '').padLeft(2, '0')}" as int
     def fabric = project.name.endsWith("-fabric")
     def vanilla = project.name.endsWith("-vanilla")
     def forge = !fabric && !vanilla
     project.ext.mcVersion = mcVersion
-    project.ext.mcVersionStr = mcVersionStr
-    project.ext.mcPlatform = fabric ? 'fabric' : forge ? 'forge' : 'vanilla'
     project.ext.fabric = fabric
     project.ext.vanilla = vanilla
     project.ext.forge = forge
 
     repositories {
-        mavenLocal()
-        maven { url "https://plugins.gradle.org/m2/" }
-        if (!fabric) maven { url "https://files.minecraftforge.net/maven/"}
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/"}
+        mavenCentral()
+        maven { url "https://maven.fabricmc.net/" }
+        if (!fabric) maven { url "https://files.minecraftforge.net/maven" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url 'https://jitpack.io' }
         maven { url "https://repo.sk1er.club/repository/maven-public" }
         maven { url 'https://repo.spongepowered.org/maven' }
     }
+
     dependencies {
         if (fabric) {
-            classpath 'fabric-loom:fabric-loom.gradle.plugin:0.4-SNAPSHOT'
+            classpath 'fabric-loom:fabric-loom.gradle.plugin:0.11-SNAPSHOT'
         } else if (mcVersion >= 11400) {
             classpath('net.minecraftforge.gradle:ForgeGradle:3.+') {
                 exclude group: 'trove', module: 'trove' // preprocessor/idea requires more recent one
@@ -35,27 +33,24 @@ buildscript{
         } else if (mcVersion >= 10800) {
             classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
             classpath('com.github.ReplayMod:ForgeGradle:' + (
-                    mcVersion >= 11200 ? '717a9f4' : // FG 2.3
+                    mcVersion >= 11200 ? '541e148' : // FG 2.3
                             mcVersion >= 10904 ? '5c1f53d' : // FG 2.2
-                                    'ceb83c0'   // FG 2.1
+                                    '48c4f0c'   // FG 2.1
             ) + ':all')
         } else {
             classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
             classpath 'com.github.ReplayMod:ForgeGradle:a8a9e0ca' // FG 1.2
         }
-        classpath 'com.github.johnrengelman:shadow:7.1.2'
     }
 }
 
-def useMixin = true
-apply plugin: 'kotlin'
+def useMixin = false
 
 repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
     maven { url "https://repo.sk1er.club/repository/maven-public" }
     maven { url 'https://repo.spongepowered.org/maven' }
-    maven { url "https://jitpack.io"}
 }
 def FABRIC = fabric
 def VANILLA = vanilla
@@ -80,7 +75,7 @@ if (mcVersion >= 10800) {
 if (!FABRIC && useMixin) {
     ext {
         mixinSrg = new File(project.buildDir, 'tmp/mixins/mixins.srg')
-        mixinRefMap = new File(project.buildDir, 'tmp/mixins/mixins.euphoria.refmap.json')
+        mixinRefMap = new File(project.buildDir, 'tmp/mixins/mixins.hytilities.refmap.json')
     }
 
     compileJava {
@@ -101,6 +96,7 @@ if (!FABRIC && useMixin) {
         }
     }
 }
+apply plugin: 'maven'
 apply plugin: 'com.replaymod.preprocess'
 apply plugin: 'maven-publish'
 
@@ -118,7 +114,7 @@ version = this.properties.getOrDefault("BUILD_ID", "LOCAL") //BUILD_ID
 group = modGroup
 archivesBaseName = modBaseName + " " + project.name
 
-sourceCompatibility = targetCompatibility = 1.8
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 compileJava.options.encoding = 'UTF-8'
 minecraft {
     if (FABRIC) {
@@ -219,13 +215,11 @@ minecraft {
             }
         }
     }
-    clientRunArgs += ["--tweakClass=gg.essential.loader.stage0.EssentialSetupTweaker",
-                      "--mixins=mixins.euphoria.json"]
 }
 
 configurations {
     embed
-    implementation.extendsFrom(embed)
+    compile.extendsFrom(embed)
 }
 
 dependencies {
@@ -277,28 +271,32 @@ dependencies {
         ][mcVersion]
     }
 
-    embed "gg.essential:loader-launchwrapper:1.1.3"
-    compileOnly "gg.essential:essential-${mcVersionStr}-forge:1684+release-1.1-phase1"
+    embed "gg.essential:loader-launchwrapper:1.1.0"
+    implementation "gg.essential:essential-${mcVersionStr}-forge:1282"
 
-    embed("com.squareup.okhttp3:okhttp:3.14.9")
+    // FG already adds this even though it is not available at runtime, so we need to manually list it to bundle it
+    if (VANILLA) {
+        compile("org.ow2.asm:asm:5.0.3")
+    }
 
     if (mcVersion == 11502) {
         minecraft 'net.minecraftforge:forge:1.15.2-31.1.18'
     }
     if (!FABRIC && useMixin) {
-        annotationProcessor 'org.spongepowered:mixin:0.8.4-SNAPSHOT'
-        compileOnly('org.spongepowered:mixin:0.8.4-SNAPSHOT') {
+        annotationProcessor 'org.spongepowered:mixin:0.8'
+        embed('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
             exclude module: 'launchwrapper'
             exclude module: 'guava'
             exclude module: 'gson'
             exclude module: 'commons-io'
         }
-        // Mixin needs these (and depends on them but for some reason that's not enough.)
+        // Mixin needs these (and depends on them but for some reason that's not enough. FG, did you do that?)
         annotationProcessor 'com.google.code.gson:gson:2.2.4'
         annotationProcessor 'com.google.guava:guava:21.0'
         annotationProcessor 'org.ow2.asm:asm-tree:6.2'
     }
 }
+
 if (FABRIC) {
     // not required, fabric manages those by itself just fine
 } else if (FG3) {
@@ -342,13 +340,24 @@ if (FG2 && useMixin) {
     }
 }
 
+task moveResources {
+    doLast {
+        ant.move file: "${buildDir}/resources/main",
+                todir: "${buildDir}/classes/java"
+    }
+}
+
+moveResources.dependsOn processResources
+classes.dependsOn moveResources
+
 processResources {
     // this will ensure that this task is redone when the versions change.
     if (mcVersion <= 11202) {
         inputs.property "version", project.version
         inputs.property "mcversion", project.minecraft.version
         // replace stuff in mcmod.info, nothing else
-        filesMatching(['mcmod.info']) {
+        from(sourceSets.main.resources.srcDirs) {
+            include 'mcmod.info'
 
             // replace version and mcversion
             expand 'version': project.version, 'mcversion': project.minecraft.version
@@ -359,17 +368,22 @@ processResources {
         rename("en_us.lang", "en_US.lang")
 
     exclude "META-INF/**"
+    copy {
+        from("src/main/resources")
+        into("build/classes/main")
+    }
+
+    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 jar {
-    classifier = "raw"
-    dependsOn configurations.embed
+    dependsOn configurations.compile
     from({
-        configurations.embed.collect {
+        configurations.compile.collect {
             it.isDirectory() ? it : zipTree(it)
         }
     }) {
-        exclude 'club.sk1er.vigilance.example.ExampleMod', 'dummyThing', 'club.sk1er.vigilance.Vigilance'
+        exclude 'club.sk1er.vigilance.example.ExampleMod', 'dummyThing'
         def i = 0
         filesMatching("META-INF/NOTICE*") { name = "$name.${i++}" }
         filesMatching("META-INF/LICENSE*") { name = "$name.${i++}" }
@@ -379,26 +393,26 @@ jar {
     }
 
     exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+    manifest {
+        attributes(
+                "ModSide": "CLIENT",
+                "FMLCorePluginContainsFMLMod": "Yes, yes it does"
+        )
+
+    }
     if (!FABRIC) {
         if (useMixin)
             from files(project.mixinRefMap.canonicalPath)
         manifest {
             attributes "ModSide": "CLIENT",
                     "FMLCorePluginContainsFMLMod": "Yes, yes it does",
+                    "FMLCorePlugin": "club.sk1er.hytilities.forge.FMLLoadingPlugin",
                     "TweakClass": "gg.essential.loader.stage0.EssentialSetupTweaker",
                     "TweakOrder": "0",
-                    'MixinConfigs': 'mixins.euphoria.json'
+                    "FMLAT": "hytilities_at.cfg"
         }
     }
 }
-
-tasks.register('bundleJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar).configure {
-    from { (FABRIC ? tasks.remapJar : tasks.jar).archiveFile.get() }
-    dependsOn { FABRIC ? tasks.remapJar : (mcVersion >= 10800 ? tasks.reobfJar : tasks.reobf) }
-    manifest.inheritFrom tasks.jar.manifest
-}
-
-tasks.assemble.dependsOn tasks.bundleJar
 
 publishing {
     publications {
@@ -418,6 +432,7 @@ publishing {
                     }
                 }
             }
+
             artifact jar
         }
     }
