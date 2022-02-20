@@ -8,6 +8,8 @@ plugins {
 
 configurations.register("compileClasspath")
 
+defaultTask("bundleJar")
+
 
 //The versions we are trying to preprocess to
 preprocess {

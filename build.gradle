@@ -414,10 +414,10 @@ jar {
         manifest {
             attributes "ModSide": "CLIENT",
                     "FMLCorePluginContainsFMLMod": "Yes, yes it does",
-                    "FMLCorePlugin": "club.sk1er.hytilities.forge.FMLLoadingPlugin",
+                    "FMLCorePlugin": "xyz.myosyn.euphoria.forge.FMLLoadingPlugin",
                     "TweakClass": "gg.essential.loader.stage0.EssentialSetupTweaker",
                     "TweakOrder": "0",
-                    "FMLAT": "hytilities_at.cfg"
+                    "FMLAT": "euphoria_at.cfg"
         }
     }
 }
