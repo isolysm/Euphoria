@@ -1,15 +1,15 @@
+includeBuild("build-logic")
+
 pluginManagement {
     repositories {
         mavenLocal()
         gradlePluginPortal()
-        jcenter()
         mavenCentral()
         google()
         maven("https://jitpack.io")
         maven("https://maven.fabricmc.net")
-        flatDir {
-            dirs=setOf(file("../../libs"))
-        }
+        maven {"https://maven.architectury.dev/" }
+        maven {"https://files.minecraftforge.net/maven/" }
     }
     resolutionStrategy {
         eachPlugin{
@@ -22,6 +22,7 @@ pluginManagement {
     }
 }
 
+rotProject.name = "Euphoria"
 rootProject.buildFileName = "root.gradle.kts"
 
 listOf(
@@ -30,6 +31,6 @@ listOf(
     include(":$version")
     project(":$version").apply {
         projectDir = file("version/$version")
-        buildFileName = "../../build.gradle"
+        buildFileName = "../../build.gradle.kts"
     }
 }

@@ -2,17 +2,17 @@
 
 plugins {
     kotlin("jvm") version Dependencies.KOTLIN apply false
-    id("fabric-loom") version Dependencies.FABRIC_LOOM apply false
+    kotlin("plugin.serialization") version Dependencies.KOTLIN apply false
+
+    id ("dev.architectury.loom") version "0.11.0-SNAPSHOT"
     id("com.replaymod.preprocess") version Dependencies.PREPROCESSOR
 }
 
 configurations.register("compileClasspath")
 
-defaultTask("bundleJar")
-
 
 //The versions we are trying to preprocess to
 preprocess {
     // Latest Fabric version
-    val fabric11801 = createNode("1.18.1-fabric", 11801, "yarn")
+    val fabric11802 = createNode("1.18.2-fabric", 11802, "yarn")
 }
