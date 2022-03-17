@@ -26,7 +26,7 @@ rotProject.name = "Euphoria"
 rootProject.buildFileName = "root.gradle.kts"
 
 listOf(
-    "1.18.1-fabric"
+    "1.18.2-fabric"
 ).forEach { version ->
     include(":$version")
     project(":$version").apply {

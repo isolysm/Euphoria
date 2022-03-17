@@ -10,4 +10,11 @@ object Dependencies {
     const val PREPROCESSOR = "7746c471309b9f179fbabd58c2032f7145622953"
     const val KOTLINX_SERIALIZATION = "1.3.2"
     const val KOTLINX_COROUTINES = "1.6.0"
+
+    //  Architectury loom still hasn't updated to the latest version of loom, which is 0.12.
+    // Just in case we replace Architectury, we'll have fabric's loom right here.
+
+    const val FABRIC_LOOM = "0.12-SNAPSHOT"
 }
+
+
