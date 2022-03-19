@@ -1,5 +1,3 @@
-includeBuild("build-logic")
-
 pluginManagement {
     repositories {
         mavenLocal()
@@ -8,8 +6,8 @@ pluginManagement {
         google()
         maven("https://jitpack.io")
         maven("https://maven.fabricmc.net")
-        maven {"https://maven.architectury.dev/" }
-        maven {"https://files.minecraftforge.net/maven/" }
+        maven("https://maven.quiltmc.org/repository/release")
+        maven("https://repo.sk1er.club/repository/maven-releases/")
     }
     resolutionStrategy {
         eachPlugin{
@@ -22,7 +20,7 @@ pluginManagement {
     }
 }
 
-rotProject.name = "Euphoria"
+rootProject.name = "Euphoria"
 rootProject.buildFileName = "root.gradle.kts"
 
 listOf(
