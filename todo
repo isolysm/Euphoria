@@ -1,5 +1,11 @@
 Fix the build.gradle.kts file so you can properly build with it.
 Add artifactoring to the project.
-Replace Architectury with Remap-loom, which is currently not finished yet/still making.
-Add a processor.kts file soon that should remap to the specified version of the game. 
 Add version support within one jar (I know this will cause some amounts of bloat but idc.)
+
+# Yujin's stuff to do
+
+Add a auto-updater (Shouldn't be too hard considering that we already planned one)
+Add an RPC 
+Add a smooth moving chat
+Make a 1.8.9 version, but I'm not going to provide support for it because literally what's the point in makng a mod for a seven year old version.
+Drop Essential support & bundling (I don't hate the people behind Essential, I just want to go my own path now.)
