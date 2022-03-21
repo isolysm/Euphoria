@@ -1,1 +1,4 @@
 # Additional API stuff that we need to make the mod function (All of which are closed source.)
+[submodule "Blossom"]
+    path = Blossom
+    url = "https://github.com/ulypse/blossom"
