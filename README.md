@@ -11,3 +11,8 @@ Euphoria is not meant for outside usage. We won't give instructions on how to in
 
 * [Blossom](https://github.com/ulypse/blossom) is the GUI we use.
 * riBBon is the auto-updater task for the mod (This is closed source as of March 21st.)
+
+# How to compile
+No.
+
+There are a couple of reasons why we don't include how to compile here, but to keep it short, someone can use it as a token logger.
