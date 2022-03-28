@@ -23,11 +23,15 @@ rootProject.name = "Euphoria"
 rootProject.buildFileName = "root.gradle.kts"
 
 listOf(
+    // Legacy versions that we might not even add whatsoever. (These are mainly for forge)
+    // "1.8.9",
+    // "1.12.2",
+    "1.18.1-fabric",
     "1.18.2-fabric"
 ).forEach { version ->
     include(":$version")
     project(":$version").apply {
-        projectDir = file("version/$version")
-        buildFileName = "../../build.gradle.kts"
+        projectDir = file("versions/$version")
+        buildFileName = "../../build.gradle"
     }
 }

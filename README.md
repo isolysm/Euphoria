@@ -6,6 +6,7 @@ This can just be a standalone mod, but I digress.
 
 Euphoria is not meant for outside usage. We won't give instructions on how to include this dependency mod. Although we want this to be open source, just don't skid anything because you won't understand what you're doing. 
 
+You can only use this on NATIVE Fabric. If I see any of you clowns use Feather Client, I'm going to kick a rice bag.
 
 # Stuff we use
 
