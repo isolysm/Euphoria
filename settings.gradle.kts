@@ -6,7 +6,8 @@ pluginManagement {
         google()
         maven("https://jitpack.io")
         maven("https://maven.fabricmc.net")
-        maven("https://maven.quiltmc.org/repository/release")
+        maven("https://maven.minecraftforge.net")
+        maven("https://repo.sk1er.club/repository/maven-releases/")
     }
     resolutionStrategy {
         eachPlugin{

@@ -1,13 +1,13 @@
 // Relies on preprocess to map to different versions of Minecraft, also did a funny with serialization
-
 plugins {
     kotlin("jvm") version "1.6.10" apply false
     kotlin("plugin.serialization") version "1.6.10" apply false
-    id("com.github.johnrengelman.shadow") version "7.1.2" apply false
 
     id("com.replaymod.preprocess") version "0ab22d2"
     id("fabric-loom") version "0.11-SNAPSHOT"
 }
+
+configurations.register("compileClasspath")
 
 //The versions we are trying to preprocess to
 preprocess {
