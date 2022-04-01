@@ -1,15 +1,10 @@
 # Euphoria
-It's a mod that helps the ease of your HUD! It's crazy fast!
+Euphoria is a simple and easy mod designed around the ease of use, as well as the versatility of the customization. It is stupid easy to configure this mod.
 
 ## Stuff we use
 
 * [Blossom](https://github.com/ulypse/blossom) is the GUI we use.
 * riBBon is the auto-updater task for the mod (This is closed source as of March 21st.)
-
-## How to compile
-No.
-
-There are a couple of reasons why we don't include how to compile here, but to keep it short, someone can use it as a token logger.
 
 ## People behind the Euphoria project:
 * [euphorxa / yujin](https://github.com/euphorxa) - Code Owner
