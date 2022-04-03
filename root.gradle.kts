@@ -11,9 +11,11 @@ configurations.register("compileClasspath")
 
 //The versions we are trying to preprocess to
 preprocess {
-    // Latest Fabric version
+    // Latest Fabric (RELEASE) version
     val fabric11802 = createNode("1.18.2", 11802, "yarn")
     val fabric11801 = createNode("1.18.1", 11801, "yarn")
+
+    // Latest Fabric (MC SNAPSHOT) version
 
     //Legacy version mappings (Forge)
     // val forge11202 = createNode("1.12.2", 11202, "srg")

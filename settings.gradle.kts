@@ -8,6 +8,9 @@ pluginManagement {
         maven("https://maven.fabricmc.net")
         maven("https://maven.minecraftforge.net")
         maven("https://repo.sk1er.club/repository/maven-releases/")
+        flatDir {
+            dirs=setOf(file("../../libs"))
+        }
     }
     resolutionStrategy {
         eachPlugin{
@@ -34,6 +37,6 @@ listOf(
     include(":$version")
     project(":$version").apply {
         projectDir = file("versions/$version")
-        buildFileName = "../../build.gradle.kts"
+        buildFileName = "../../build.gradle"
     }
 }
