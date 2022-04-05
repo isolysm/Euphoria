@@ -26,17 +26,20 @@ pluginManagement {
     }
 }
 
+val euphoriaVersions = listOf {
+    // Legacy versions of MC (Forge)
+    // "1.8.9"
+    // "1.12.2"
+
+    // Fabric versions
+    "1.18.1-fabric",
+    "1.18.2-fabric"
+}
+
 rootProject.name = "Euphoria"
 rootProject.buildFileName = "root.gradle.kts"
 
-listOf(
-    // Legacy versions that we might not even add whatsoever. (These are mainly for forge)
-    // "1.8.9",
-    // "1.12.2",
-    // Fabric Verisons
-    "1.18.1-fabric",
-    "1.18.2-fabric"
-).forEach { version ->
+euphoriaVersions.forEach { version ->
     include(":$version")
     project(":$version").apply {
         projectDir = file("versions/$version")
