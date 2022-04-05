@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "1.6.20" apply false
-    kotlin("plugin.serialization") version "1.6.10" apply false
+    kotlin("plugin.serialization") version "1.6.20" apply false
 
     id("com.github.johnrengelman.shadow") version "7.1.2" apply false
     id("com.replaymod.preprocess") version "0ab22d2"
