@@ -16,6 +16,7 @@ Whatever the case is, we hope that this project releases soon, and by soon, I me
 * Preprocessor is used to develop Minecraft versions 1.8.9, 1.12.2, and 1.18.x. 
   * However, we do not provide 1.8.9 and 1.12.2. We will only work on it if we want to kill some time, and either way, you can find our features in other mods.
   * 1.8.9 and 1.12.2 intentionally have LESS features due to mods conflicting with them.
+  * 1.8.9 will also have features that might BREAK your game. We highly advise you to not use that version. 
 
 ## Download
 You can download Euphoria from the following locations:

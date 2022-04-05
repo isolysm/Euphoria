@@ -4,7 +4,7 @@ plugins {
 
     id("com.github.johnrengelman.shadow") version "7.1.2" apply false
     id("com.replaymod.preprocess") version "0ab22d2"
-    id("fabric-loom") version "0.11-SNAPSHOT" apply false
+    id("fabric-loom") version "0.12-SNAPSHOT" apply false
 }
 
 configurations.register("compileClasspath")
