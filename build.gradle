@@ -115,7 +115,6 @@ preprocess {
 
 version = this.properties.getOrDefault("BUILD_ID", "LOCAL") //BUILD_ID
 group = "xyz.myosyn"
-archivesBaseName = modBaseName + " " + project.name
 
 sourceCompatibility = targetCompatibility = 1.8
 compileJava.options.encoding = 'UTF-8'
