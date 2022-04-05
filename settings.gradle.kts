@@ -26,15 +26,15 @@ pluginManagement {
     }
 }
 
-val euphoriaVersions = listOf {
+val euphoriaVersions = listOf (
     // Legacy versions of MC (Forge)
     // "1.8.9"
     // "1.12.2"
 
     // Fabric versions
     "1.18.1-fabric",
-    "1.18.2-fabric"
-}
+    "1.18.2-fabric",
+)
 
 rootProject.name = "Euphoria"
 rootProject.buildFileName = "root.gradle.kts"
