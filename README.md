@@ -1,6 +1,8 @@
 # Euphoria
 Euphoria is a simple and easy mod designed around the ease of use, as well as the versatility of the customization. It is stupid easy to configure this mod.
 
+This is a FABRIC mod. Please do not add this to Forge, as you will crash, regardless of circumstance.
+
 ## Development on Euphoria
 Hey, this is Vispin, an active developer on Euphoria. 
 
