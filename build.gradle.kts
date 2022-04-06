@@ -14,6 +14,7 @@ version = "1.0.0-PRE1" + "SNAPSHOT"
 val mcMajor: Int by extra
 val mcMinor: Int by extra
 val mcPatch: Int by extra
+val loader: Loader
 val mcVersion = mcMajor * 10000 + mcMinor * 100 + mcPatch
 val mcVersionStr = listOf(mcMajor, mcMinor, mcPatch).dropLastWhile { it == 0 }.joinToString(".")
 val loaderStr = loader.toString().toLowerCase()
