@@ -4,15 +4,17 @@
   "version": "${version}",
   "environment": "*",
   "authors": [
-    "MyosynLLC"
+    "Myosyn",
+    "Yujin",
+    "Vispin"
   ],
   "depends": {
     "fabricloader": "*"
   },
-  "description": "A base modding library.",
+  "description": "A generalized mod that does multiple tasks. It's fast!",
   "custom": {
     "modmenu": {
-      "badges": [ "library" ]
+      "badges": [ "mod" ]
     }
   }
 }
