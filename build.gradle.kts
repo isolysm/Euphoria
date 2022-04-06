@@ -1,55 +1,41 @@
-import gg.essential.gradle.util.prebundle
-import gg.essential.gradle.util.RelocationTransform.Companion.registerRelocationAttribute
-
 plugins {
     kotlin("jvm")
     kotlin("plugin.serialization")
-    id("gg.essential.multi-version")
-    id("gg.essential.defaults")
+    id("com.replaymod.preprocess")
+    id("com.github.johnrengelman.shadow")
+    id("fabric-loom")
     `maven-publish`
     java
 }
 
-val relocated = registerRelocationAttribute("relocate-ancient-gson") {
-    relocate("com.google.gson", "com.example.lib.gson")
-}
+group = "dev.myosyn"
+version = "1.0.0-PRE1" + "SNAPSHOT"
 
-val ancientGson by configurations.creating {
-    attributes { attribute(relocated, true) }
-}
+val mcMajor: Int by extra
+val mcMinor: Int by extra
+val mcPatch: Int by extra
+val mcVersion = mcMajor * 10000 + mcMinor * 100 + mcPatch
+val mcVersionStr = listOf(mcMajor, mcMinor, mcPatch).dropLastWhile { it == 0 }.joinToString(".")
+val loaderStr = loader.toString().toLowerCase()
+val isFabric = loader == Loader.Fabric
+val isForge = loader == Loader.Forge
+val isModLauncher = loader == Loader.Forge && mcVersion >= 11400
+val isLegacyForge = loader == Loader.Forge && mcVersion < 11400
+
+// No betas have yet to be released for Quilt, so this is on hold.
+// val isQuiltFabric = loader = Loader
 
 dependencies {
-    val bothLibs by configurations.creating
-    // If you are depending on a multi-version library following the same scheme as the Essential libraries (that is
-    // e.g. `elementa-1.8.9-forge`), you can `toString` `platform` directly to get the respective artifact id.
-    modImplementation("gg.essential:elementa-$platform:428")
-    bothLibs("com.google.code.gson:gson:2.0.0")
-    bothLibs("com.example:libRequiringAnAncientGson:1.0.0")
-    implementation(prebundle(bothLibs))
-    implementation(prebundle(ancientGson))
-}
-
-tasks.processResources {
-    // Expansions are already set up for `version` (or `file.jarVersion`) and `mcVersionStr`.
-    // You do not need to set those up manually.
-}
-
-loom {
-    // If you need to use a tweaker on legacy (1.12.2 and below) forge:
-    if (platform.isLegacyForge) {
-        launchConfigs.named("client") {
-            arg("--tweakClass", "gg.essential.loader.stage0.EssentialSetupTweaker")
-            // And maybe a core mod?
-            property("fml.coreMods.load", "com.example.asm.CoreMod")
+    if (platform.isFabric) {
+        val fabricApiVersion = when(platform.mcVersion) {
+            11404 -> "0.4.3+build.247-1.14"
         }
     }
-    // Mixin on forge? (for legacy forge you will still need to register a tweaker to set up mixin)
-    if (platform.isForge) {
-        forge {
-            mixinConfig("euphoria.mixins.json")
-            // And maybe an access transformer?
-            // Though try to avoid these, cause they are not automatically translated to Fabric's access widener
-            accessTransformer(project.parent.file("src/main/resources/example_at.cfg"))
-        }
-    }
+}
+
+val javaVersion = when {
+    mcVersion >= 11800 -> JavaVersion.VERSION_17
+    mcVersion >= 11700 -> JavaVersion.VERSION_16
+    mcVersion >= 11400 -> JavaVersion.VERSION_11
+    else -> JavaVersion.VERSION_1_8
 }

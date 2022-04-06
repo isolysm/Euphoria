@@ -3,12 +3,11 @@ plugins {
     kotlin("plugin.serialization") version "1.6.20" apply false
 
     id("com.github.johnrengelman.shadow") version "7.1.2" apply false
-    id("gg.essential.multi-version.root")
-    // id("com.replaymod.preprocess") version "0ab22d2" (Not needed for now because we're using multi-version)
-    // id("fabric-loom") version "0.12-SNAPSHOT" apply false
+    id("com.replaymod.preprocess") version "0ab22d2" 
+    id("fabric-loom") version "0.12-SNAPSHOT" apply false
 }
 
-
+configurations.register("compileClasspath")
 
 //The versions we are trying to preprocess to
 preprocess {
@@ -21,8 +20,8 @@ preprocess {
     // val forge11801 = createNode("1.18.1-forge", 11801, "srg")
 
     //Legacy version mappings (Forge)
-    // val forge11202 = createNode("1.12.2", 11202, "srg")
-    // val forge10809 = createNode("1.8.9", 10809, "srg")
+    // val forge11202 = createNode("1.12.2-forge", 11202, "srg")
+    // val forge10809 = createNode("1.8.9-forge", 10809, "srg")
 
     // Conjunction points
     fabric11802.link(fabric11801, file("versions/1.18.1-1.18.2-mappings.txt"))

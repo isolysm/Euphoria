@@ -12,11 +12,6 @@ pluginManagement {
             dirs=setOf(file("../../libs"))
         }
     }
-    plugins {
-        val egtVersion = "0.1.0" // should be whatever is displayed in above badge
-        id("gg.essential.multi-version.root") version egtVersion
-        id("gg.essential.multi-version.api-validation") version egtVersion
-    }
     resolutionStrategy {
         eachPlugin{
             when (requested.id.id) {
