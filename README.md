@@ -1,6 +1,8 @@
 # Euphoria
 Euphoria is a simple and easy mod designed around the ease of use, as well as the versatility of the customization. It is stupid easy to configure this mod.
 
+What am I kidding, this is just ported Patcher to 1.18, with a few extra features that Jade doesn't want to add. (I'm sorry Jade)
+
 This is a FABRIC mod. Please do not add this to Forge, as you will crash, regardless of circumstance.
 
 ## Development on Euphoria
