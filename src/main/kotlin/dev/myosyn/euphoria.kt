@@ -1,2 +1,2 @@
-package xyz.myosyn
+package dev.myosyn
 

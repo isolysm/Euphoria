@@ -1,1 +1,1 @@
-package xyz.myosyn.config
+package dev.myosyn.config

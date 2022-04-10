@@ -2,6 +2,8 @@ plugins {
     kotlin("jvm")
     kotlin("plugin.serialization")
     id("com.github.johnrengelman.shadow")
+    // id("fabric-loom")
+    // id("com.replaymod.preprocess")
     id("gg.essential.multi-version")
     id("gg.essential.defaults.repo")
     id("gg.essential.defaults.java")
