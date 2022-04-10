@@ -14,3 +14,18 @@ plugins {
 
 group = "dev.myosyn"
 version = "1.0.0-PRE1" + "SNAPSHOT"
+
+repositories {
+    // maven("https://myosyn.jfrog.io/artifactory/euphoria-gradle-release/")
+    maven("https://myosyn.jfrog.io/artifactory/euphoria-gradle-dev/")
+}
+
+preprocess {
+    vars.put("MC", mcVersion)
+}
+
+loom {
+    if (project.platform.isFabric) {
+        launchConfigs.named("Client")
+    }
+}
