@@ -1,6 +1,9 @@
 package dev.myosyn
 
-class euphoria {
+import net.fabricmc.api.ClientModInitializer
+
+/*
+class euphoria : ClientModInitializer {
 
 }
-
+*/

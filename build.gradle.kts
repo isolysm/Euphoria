@@ -1,6 +1,5 @@
 import gg.essential.gradle.util.noServerRunConfigs
 import gg.essential.gradle.util.setJvmDefault
-import org.jetbrains.kotlin.gradle.tasks.throwGradleExceptionIfError
 
 plugins {
     kotlin("jvm")
@@ -13,6 +12,7 @@ plugins {
     id("gg.essential.defaults.java")
     id("gg.essential.defaults.loom")
     `maven-publish`
+    signing
     java
 }
 
@@ -22,10 +22,14 @@ version = "1.0.0-PRE1" + "SNAPSHOT"
 repositories {
     mavenLocal()
     mavenCentral()
+    maven("https://repo.essential.gg/repository/maven-public")
+    maven("https://repo.essential.gg/repository/maven-releases")
+    maven("https://maven.terraformersmc.com/releases/")
+    maven("https://jitpack.io")
 }
 
 preprocess {
-    vars.put("MC", mcVersion)
+    vars.put("MODERN", if (project.platform.mcMinor >= 16) 1 else 0)
 }
 
 java.withSourcesJar()
@@ -33,12 +37,29 @@ tasks.compileKotlin.setJvmDefault(if (platform.mcVersion >= 11400) "all" else "a
 loom.noServerRunConfigs()
 
 loom {
+    runConfigs {
+        named("client") {
+            ideConfigGenerated(true)
+        }
+    }
+    if (project.platform.isLegacyForge) {
+        launchConfigs.named("client") {
+            arg("--tweakClass", "gg.essential.loader.stage0.EssentialSetupTweaker")
+        }
+    }
+}
 
+val shade: Configuration by configurations.creating {
+    isTransitive = false
+}
+
+val shadeMod: Configuration by configurations.creating {
+    configurations.implementation.get().extendsFrom(this)
 }
 
 dependencies {
     if (platform.isLegacyForge) {
-
+        compileOnly("gg.essential:essential-$platform:2656")
     }
 
     if (platform.isForge) {
@@ -70,15 +91,32 @@ dependencies {
             "keybindings-v0"
         )
 
-        fabricApiModules.forEach { module ->
+        fabricApiModules.forEach { _ ->
             modImplementation("net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}")
             modImplementation("net.fabricmc:fabric-language-kotlin:1.7.3+kotlin.1.6.20")
+            modImplementation("com.terraformersmc:modmenu:3.1.0")
             // Apparently there's already a mapping present, great.
             // mappings("net.fabricmc:yarn::${yarnMappings}")
         }
-
     }
-
 }
+
+tasks.jar {
+    if (platform.isLegacyForge) {
+        manifest {
+            attributes(
+                mapOf(
+                    "FMLCorePluginContainsFMLMod" to true,
+                    "ForceLoadAsMod" to true,
+                    "MixinConfigs" to "mixins.euphoria.refmap.json",
+                    "ModSide" to "CLIENT",
+                    "TweakOrder" to 0
+                )
+            )
+        }
+    }
+}
+
+
 
 // TODO: Add some publishing because why not

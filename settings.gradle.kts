@@ -4,6 +4,8 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
         google()
+        maven("https://jitpack.io")
+        maven("https://maven.terraformersmc.com/releases/")
         maven("https://maven.architectury.dev")
         maven("https://maven.fabricmc.net")
         maven("https://maven.minecraftforge.net")
