@@ -6,12 +6,7 @@ What am I kidding, this is just ported Patcher to 1.18, with a few extra feature
 This is a FABRIC mod. Please do not add this to Forge, as you will crash, regardless of circumstance.
 
 ## Development on Euphoria
-Hey, this is Vispin, an active developer on Euphoria. 
-
-We're sorry to say this is taking longer than expected, but please be aware we're a two person group that has projects and assignments in real life to complete.
-Our goals are also a lot more ambitious than you think, resulting in us trying to improve our features, as well as try to make it so it is unmatched by other mods. 
-
-Whatever the case is, we hope that this project releases soon, and by soon, I mean before 2023.
+We currently cannot provide support for 
 
 ## Stuff we use
 

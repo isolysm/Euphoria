@@ -1,4 +1,5 @@
 plugins {
+    // TODO: Bump jvm to 1.6.21 once fabric language kotlin updates
     kotlin("jvm") version "1.6.20" apply false
     kotlin("plugin.serialization") version "1.6.20" apply false
 

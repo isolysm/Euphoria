@@ -4,17 +4,17 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
         google()
-        maven("https://repo.essential.gg/repository/maven-public")
         maven("https://maven.architectury.dev")
         maven("https://maven.fabricmc.net")
         maven("https://maven.minecraftforge.net")
+        maven("https://repo.essential.gg/repository/maven-public")
         flatDir {
             dirs = setOf(file("../../libs"))
         }
     }
 
-    plugins{
-        val egtVersion = "0.1.1"
+    plugins {
+        val egtVersion = "0.1.3"
         id("gg.essential.multi-version.root") version egtVersion
         id("gg.essential.multi-version.api-validation") version egtVersion
     }
