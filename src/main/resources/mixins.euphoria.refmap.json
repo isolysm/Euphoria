@@ -1,6 +1,6 @@
 {
   "compatibilityLevel": "JAVA_17",
-  "package": "xyz.myosyn.mods.euphoria.mixin",
+  "package": "dev.myosyn.euphoria.mixins",
   "refmap": "mixins.euphoria.refmap.json",
   "mixins": [],
   "verbose": true,

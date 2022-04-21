@@ -1,3 +1,4 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import gg.essential.gradle.util.noServerRunConfigs
 import gg.essential.gradle.util.setJvmDefault
 
@@ -62,10 +63,6 @@ dependencies {
         compileOnly("gg.essential:essential-$platform:2656")
     }
 
-    if (platform.isForge) {
-
-    }
-
     if (platform.isFabric) {
         val fabricApiVersion = when(platform.mcVersion) {
             11404 -> "0.4.3+build.247-1.14"
@@ -92,28 +89,39 @@ dependencies {
         )
 
         fabricApiModules.forEach { _ ->
-            modImplementation("net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}")
-            modImplementation("net.fabricmc:fabric-language-kotlin:1.7.3+kotlin.1.6.20")
-            modImplementation("com.terraformersmc:modmenu:3.1.0")
             // Apparently there's already a mapping present, great.
             // mappings("net.fabricmc:yarn::${yarnMappings}")
         }
+
+        modImplementation("net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}")
+        modImplementation("net.fabricmc:fabric-language-kotlin:1.7.3+kotlin.1.6.20")
+        modImplementation("com.terraformersmc:modmenu:3.1.0")
     }
+
+    implementation("com.github.LlamaLad7:MixinExtras:0.0.8")
+    annotationProcessor("com.github.LlamaLad7:MixinExtras:0.0.8")
 }
 
-tasks.jar {
-    if (platform.isLegacyForge) {
-        manifest {
-            attributes(
-                mapOf(
-                    "FMLCorePluginContainsFMLMod" to true,
-                    "ForceLoadAsMod" to true,
-                    "MixinConfigs" to "mixins.euphoria.refmap.json",
-                    "ModSide" to "CLIENT",
-                    "TweakOrder" to 0
+tasks.processResources {
+
+}
+
+tasks {
+    withType<ShadowJar> {
+        if (platform.isLegacyForge) {
+            manifest {
+                attributes(
+                    mapOf(
+                        "FMLCorePluginContainsFMLMod" to true,
+                        "ForceLoadAsMod" to true,
+                        "MixinConfigs" to "mixins.euphoria.refmap.json",
+                        "ModSide" to "CLIENT",
+                        "TweakOrder" to 0
+                    )
                 )
-            )
+            }
         }
+        relocate("com.github.LlamaLad7:MixinExtras", "dev.myosyn.euphoria.mixinextras")
     }
 }
 
