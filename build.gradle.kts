@@ -59,7 +59,12 @@ val shadeMod: Configuration by configurations.creating {
 }
 
 dependencies {
+
+    annotationProcessor("com.github.LlamaLad7:MixinExtras:0.0.8")
+
     if (platform.isLegacyForge) {
+        // You need this because otherwise you can't use mixin 0.8.x on 1.8.9
+        // Also I didn't want to force this but oh well.
         compileOnly("gg.essential:essential-$platform:2656")
     }
 
@@ -71,8 +76,15 @@ dependencies {
             11701 -> "0.38.1+1.17"
             11801 -> "0.46.4+1.18"
             11802 -> "0.51.1+1.18.2"
+            // 11900 -> "0.51.2+1.19"
             else -> throw GradleException("Invalid platform $platform")
         }
+        /*
+        val fabricLoader = when(platform.mcVersion) {
+            11404 -> ""
+            else -> throw GradleException("Invalid mcVersion; $platform")
+        }
+        */
         /*
         val yarnMappings = when(platform.mcVersion) {
             11404 -> "1.14.4+build.18"
@@ -85,12 +97,14 @@ dependencies {
         }
          */
         val fabricApiModules = mutableListOf(
-            "keybindings-v0"
+            "api-base",
+            "keybindings-v0",
+            "resource-loader-v0",
+            "resource-loader-v0",
         )
 
-        fabricApiModules.forEach { _ ->
-            // Apparently there's already a mapping present, great.
-            // mappings("net.fabricmc:yarn::${yarnMappings}")
+        if (platform.mcVersion >= 11600) {
+            fabricApiModules.add("key-binding-api-v1")
         }
 
         modImplementation("net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}")
@@ -99,7 +113,6 @@ dependencies {
     }
 
     implementation("com.github.LlamaLad7:MixinExtras:0.0.8")
-    annotationProcessor("com.github.LlamaLad7:MixinExtras:0.0.8")
 }
 
 tasks.processResources {
