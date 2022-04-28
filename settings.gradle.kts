@@ -2,8 +2,6 @@ pluginManagement {
     repositories {
         mavenLocal()
         gradlePluginPortal()
-        mavenCentral()
-        google()
         maven("https://jitpack.io")
         maven("https://maven.terraformersmc.com/releases/")
         maven("https://maven.architectury.dev")
@@ -16,7 +14,7 @@ pluginManagement {
     }
 
     plugins {
-        val egtVersion = "0.1.4"
+        val egtVersion = "0.1.5"
         id("gg.essential.multi-version.root") version egtVersion
         id("gg.essential.multi-version.api-validation") version egtVersion
     }
