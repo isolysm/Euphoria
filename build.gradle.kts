@@ -98,10 +98,6 @@ dependencies {
             else -> throw GradleException("Invalid platform present: $platform")
         }
 
-        val modMenuVersion = when(platform.mcVersion) {
-            else -> throw GradleException("Invalid platform present: $platform")
-        }
-
         val fabricApiModules = mutableListOf(
             "api-base",
             "keybindings-v0",
