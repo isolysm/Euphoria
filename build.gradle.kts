@@ -37,6 +37,7 @@ preprocess {
     vars.put("MODERN", if (project.platform.mcMinor >= 16) 1 else 0)
 }
 
+java.withSourcesJar()
 tasks.compileKotlin.setJvmDefault(if (platform.mcVersion >= 11400) "all" else "all-compatibility")
 loom.noServerRunConfigs()
 
@@ -96,6 +97,11 @@ dependencies {
             // 11900 -> "0.51.2+1.19"
             else -> throw GradleException("Invalid platform $platform")
         }
+
+        val modMenuVersion = when(platform.mcVersion) {
+
+        }
+
         val fabricApiModules = mutableListOf(
             "api-base",
             "keybindings-v0",
@@ -105,9 +111,11 @@ dependencies {
         if (platform.mcVersion >= 11600) {
             fabricApiModules.add("key-binding-api-v1")
         }
+        /*
         fabricApiModules.forEach { module ->
             modRuntime(modCompileOnly(fabricApi.module("fabric-$module", fabricApiVersion))!!)
         }
+        */
         modImplementation("net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}")
         modImplementation("net.fabricmc:fabric-language-kotlin:1.7.4+kotlin.1.6.21")
         modImplementation("com.terraformersmc:modmenu:3.1.+")
