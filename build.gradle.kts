@@ -95,11 +95,11 @@ dependencies {
             11801 -> "0.46.4+1.18"
             11802 -> "0.51.1+1.18.2"
             // 11900 -> "0.51.2+1.19"
-            else -> throw GradleException("Invalid platform $platform")
+            else -> throw GradleException("Invalid platform present: $platform")
         }
 
         val modMenuVersion = when(platform.mcVersion) {
-
+            else -> throw GradleException("Invalid platform present: $platform")
         }
 
         val fabricApiModules = mutableListOf(
