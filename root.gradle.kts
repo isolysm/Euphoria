@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.6.21" apply false
-    kotlin("plugin.serialization") version "1.6.21" apply false
+    kotlin("jvm") version "1.6.10" apply false
+    kotlin("plugin.serialization") version "1.6.10" apply false
 
     id("com.github.johnrengelman.shadow") version "7.1.2" apply false
     id("gg.essential.multi-version.root") version "0.1.6"
@@ -25,7 +25,7 @@ preprocess {
     // val forge10809 = createNode("1.8.9-forge", 10809, "srg")
 
     // Conjunction points
-    fabric11802.link(fabric11801, file("versions/1.18.1-1.18.2-mappings.txt"))
+    fabric11801.link(fabric11802, file("versions/1.18.1-1.18.2-mappings.txt"))
     // forge11802.link(forge11801)
     // forge11202.link(forge10809)
 }
