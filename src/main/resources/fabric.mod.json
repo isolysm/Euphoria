@@ -5,9 +5,10 @@
   "environment": "*",
   "authors": [
     "Myosyn",
-    "Yujin",
+    "Yujin/Shuuyu",
     "Vispin"
   ],
+  "license": "Attribution-NonCommercial-ShareAlike 4.0 International",
   "depends": {
     "fabricloader": "*"
   },

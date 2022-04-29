@@ -2,8 +2,6 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import gg.essential.gradle.util.noServerRunConfigs
 import gg.essential.gradle.util.setJvmDefault
 import net.fabricmc.loom.task.RemapJarTask
-import org.apache.tools.ant.taskdefs.BuildNumber
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
@@ -71,6 +69,7 @@ val shadowMeMod: Configuration by configurations.creating {
 }
 
 dependencies {
+    shadowMeMod("gg.essential:loader-fabric:1.0.0")
     compileOnly ("org.spongepowered:mixin:0.8.5-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
     "com.github.LlamaLad7:MixinExtras:0.0.9".let {
@@ -99,26 +98,22 @@ dependencies {
             // 11900 -> "0.51.2+1.19"
             else -> throw GradleException("Invalid platform $platform")
         }
-
         val fabricApiModules = mutableListOf(
             "api-base",
             "keybindings-v0",
             "resource-loader-v0",
             "resource-loader-v0",
         )
-
         if (platform.mcVersion >= 11600) {
             fabricApiModules.add("key-binding-api-v1")
         }
-
         fabricApiModules.forEach { module ->
             modRuntime(modCompileOnly(fabricApi.module("fabric-$module", fabricApiVersion))!!)
         }
-
         modImplementation("net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}")
         modImplementation("net.fabricmc:fabric-language-kotlin:1.7.4+kotlin.1.6.21")
         modImplementation("com.terraformersmc:modmenu:3.1.+")
-        shadowMeMod("gg.essential:vigilance-1.18.1-${platform.loaderStr}:215"!!) {
+        shadowMeMod("gg.essential:vigilance-1.18.1-${platform.loaderStr}:215") {
             exclude(module = "kotlin-reflect")
             exclude(module = "kotlin-stdlib-jdk8")
             exclude(group = "net.fabricmc")
