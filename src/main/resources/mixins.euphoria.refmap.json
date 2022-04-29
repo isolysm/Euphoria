@@ -1,8 +1,10 @@
 {
   "compatibilityLevel": "JAVA_17",
-  "package": "dev.myosyn.euphoria.mixins",
+  "package": "dev.shuuyu.euphoria.mixins",
   "refmap": "mixins.euphoria.refmap.json",
-  "mixins": [],
+  "mixins": [
+    "ChatMixins"
+  ],
   "verbose": true,
   "client": []
 }
