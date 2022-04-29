@@ -55,6 +55,14 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.toml"), "
     )
     var enableDiscordRPC = true
 
+    @Property(
+        type = PropertyType.SWITCH,
+        name = "Enable Autoupdater",
+        description = "Enables the autoupdater, which will autoupdate this mod whenever there is a new update.",
+        category = "Extras"
+    )
+    var enabledAutoUpdater = false
+
     init {
         initialize()
     }

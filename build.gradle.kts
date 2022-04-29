@@ -98,7 +98,7 @@ dependencies {
             // 11900 -> "0.51.2+1.19"
             else -> throw GradleException("Invalid platform present: $platform")
         }
-        /*
+
         val fabricApiModules = mutableListOf(
             "api-base",
             "keybindings-v0",
@@ -112,7 +112,7 @@ dependencies {
         fabricApiModules.forEach { module ->
             modRuntime(modCompileOnly(fabricApi.module("fabric-$module", fabricApiVersion))!!)
         }
-        */
+
         modImplementation("net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}")
         modImplementation("net.fabricmc:fabric-language-kotlin:1.7.4+kotlin.1.6.21")
         modImplementation("com.terraformersmc:modmenu:3.1.+")
