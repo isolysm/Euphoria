@@ -3,8 +3,7 @@ plugins {
     kotlin("plugin.serialization") version "1.6.10" apply false
 
     id("com.github.johnrengelman.shadow") version "7.1.2" apply false
-    id("gg.essential.multi-version.root")
-    id("gg.essential.multi-version.api-validation")
+    id("gg.essential.multi-version.root") version "0.1.6"
     // id("com.replaymod.preprocess") version "73d8bed"
     // id("fabric-loom") version "0.12-SNAPSHOT" apply false
 }

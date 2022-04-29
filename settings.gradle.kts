@@ -12,12 +12,6 @@ pluginManagement {
             dirs = setOf(file("../../libs"))
         }
     }
-
-    plugins {
-        val egtVersion = "0.1.6"
-        id("gg.essential.multi-version.root") version egtVersion
-        id("gg.essential.multi-version.api-validation") version egtVersion
-    }
     /*
     resolutionStrategy {
         eachPlugin{
