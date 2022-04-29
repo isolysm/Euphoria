@@ -70,7 +70,8 @@ val shadowMeMod: Configuration by configurations.creating {
 
 dependencies {
     shadowMeMod("gg.essential:loader-fabric:1.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+    // implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+    implementation(kotlin("stdlib-jdk8", "1.6.21"))
     "com.github.LlamaLad7:MixinExtras:0.0.9".let {
         implementation(it)
         annotationProcessor(it)
@@ -97,7 +98,7 @@ dependencies {
             // 11900 -> "0.51.2+1.19"
             else -> throw GradleException("Invalid platform present: $platform")
         }
-
+        /*
         val fabricApiModules = mutableListOf(
             "api-base",
             "keybindings-v0",
@@ -107,7 +108,7 @@ dependencies {
         if (platform.mcVersion >= 11600) {
             fabricApiModules.add("key-binding-api-v1")
         }
-        /*
+
         fabricApiModules.forEach { module ->
             modRuntime(modCompileOnly(fabricApi.module("fabric-$module", fabricApiVersion))!!)
         }
