@@ -54,4 +54,8 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.toml"), "
         category = "Extras"
     )
     var enableDiscordRPC = true
+
+    init {
+        initialize()
+    }
 }
