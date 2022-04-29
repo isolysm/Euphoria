@@ -70,7 +70,6 @@ val shadowMeMod: Configuration by configurations.creating {
 
 dependencies {
     shadowMeMod("gg.essential:loader-fabric:1.0.0")
-    compileOnly ("org.spongepowered:mixin:0.8.5-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
     "com.github.LlamaLad7:MixinExtras:0.0.9".let {
         implementation(it)
