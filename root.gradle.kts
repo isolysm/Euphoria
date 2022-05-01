@@ -16,16 +16,6 @@ preprocess {
     val fabric11802 = createNode("1.18.2-fabric", 11802, "yarn")
     val fabric11801 = createNode("1.18.1-fabric", 11801, "yarn")
 
-    // Latest Forge Mappings (If I even begin to start forge modding for later versions)
-    // val forge11802 = createNode("1.18.2-forge", 11802, "srg")
-    // val forge11801 = createNode("1.18.1-forge", 11801, "srg")
-
-    // Legacy version mappings (Forge)
-    // val forge11202 = createNode("1.12.2-forge", 11202, "srg")
-    // val forge10809 = createNode("1.8.9-forge", 10809, "srg")
-
     // Conjunction points
     fabric11801.link(fabric11802, file("versions/1.18.1-1.18.2-mappings.txt"))
-    // forge11802.link(forge11801)
-    // forge11202.link(forge10809)
 }
