@@ -19,7 +19,7 @@ plugins {
 }
 
 group = "dev.myosyn"
-version = "1.0.0-PRE1" + "SNAPSHOT"
+version = "1.0.0-PRE1"
 
 repositories {
     mavenLocal()

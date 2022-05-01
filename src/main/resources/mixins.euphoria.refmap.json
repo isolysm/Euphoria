@@ -3,7 +3,8 @@
   "package": "dev.shuuyu.euphoria.mixins",
   "refmap": "mixins.euphoria.refmap.json",
   "mixins": [
-    "ChatMixins"
+    "ChatMixins",
+    "CompactChatMixins"
   ],
   "verbose": true,
   "client": []
