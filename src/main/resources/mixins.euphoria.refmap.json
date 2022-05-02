@@ -4,7 +4,7 @@
   "refmap": "mixins.euphoria.refmap.json",
   "mixins": [
     "ChatMixins",
-    "CompactChatMixins"
+    "CompressChatMixins"
   ],
   "verbose": true,
   "client": []

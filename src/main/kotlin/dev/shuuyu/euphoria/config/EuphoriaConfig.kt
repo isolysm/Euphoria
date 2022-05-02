@@ -5,6 +5,7 @@ import gg.essential.vigilance.data.Property
 import gg.essential.vigilance.data.PropertyType
 import java.io.File
 
+@Suppress("Unused")
 object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.toml"), "Euphoria~") {
 
     @Property(
@@ -39,6 +40,13 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.toml"), "
         category = "Chat"
     )
     var enableCopyChat = true
+
+    @Property(
+        type = PropertyType.SWITCH, name = "Timestamps",
+        description = "Hovering over a message will give you the time it was sent at.",
+        category = "Chat"
+    )
+    var enableHoveringTimestamp = true
 
     @Property(
         type = PropertyType.SWITCH,
@@ -83,8 +91,6 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.toml"), "
     var allowUpdaterNotification = true
 
     init {
-        addDependency("enableEuphoriaVersion", "UpdateVerifier")
-
         initialize()
     }
 }

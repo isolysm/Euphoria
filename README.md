@@ -4,7 +4,8 @@ Euphoria is a simple and easy mod designed around the ease of use, as well as th
 This is a FABRIC mod. Please do not add this to Forge, as you will crash, regardless of circumstance.
 
 ## Development on Euphoria
-We currently cannot provide support for 
+We will **NOT** be providing any support for Forge in the near future. Although some of the userbase is located on Forge, it requires
+a **FULL REWRITE OF EVERYTHING THAT WE'VE ALREADY DONE**. Include the motivation part of things, and you have a bomb ready for disaster.
 
 ## Stuff we use
 
