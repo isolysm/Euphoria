@@ -12,18 +12,6 @@ pluginManagement {
             dirs = setOf(file("../../libs"))
         }
     }
-    /*
-    resolutionStrategy {
-        eachPlugin{
-            when (requested.id.id) {
-                "com.replaymod.preprocess" -> {
-                    useModule("com.github.replaymod:preprocessor:${requested.version}")
-                }
-            }
-        }
-    }
-
-     */
 }
 
 rootProject.name = "Euphoria"

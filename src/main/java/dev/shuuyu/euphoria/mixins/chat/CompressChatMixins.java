@@ -1,4 +1,4 @@
-package dev.shuuyu.euphoria.mixins;
+package dev.shuuyu.euphoria.mixins.chat;
 
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
