@@ -9,7 +9,6 @@ object UpdateVerifier {
         RELEASE("REL"),
         RELEASECANDIDATE("RC"),
         PRERELEASE("PRE"),
-        ALPHARELEASE("APR"),
-        DEVELOPERRELEASE("DEVREL")
+        DEVELOPERBUILD("DEVBUILD")
     }
 }

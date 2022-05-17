@@ -28,3 +28,14 @@ listOf(
     }
 }
 
+fun getJavaVersion() = System.getProperty("java.version")
+
+gradle.settingsEvaluated {
+    if ("true" == System.getProperty("org.gradle.ignoreBuildJavaVersionCheck")) {
+        return@settingsEvaluated
+    }
+    if(JavaVersion.current().ordinal + 1 >= 17) {
+        throw GradleException("This build requires JDK 17. You're currently using JDK ${getJavaVersion()}. You can ignore this by passing '-Dorg.gradle.ignoreBuildJavaVersionCheck'")
+    }
+}
+

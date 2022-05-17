@@ -2,6 +2,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import gg.essential.gradle.util.noServerRunConfigs
 import gg.essential.gradle.util.setJvmDefault
 import net.fabricmc.loom.task.RemapJarTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
@@ -68,13 +69,14 @@ val shadowMeMod: Configuration by configurations.creating {
 
 dependencies {
     shadowMeMod("gg.essential:loader-fabric:1.0.0")
-    // implementation("org.jetbrains.kotlin:kotlin-stdlib:1.6.21")
+    shadowMe("dev.cbyrne:kdiscordipc:655c6fb")
     implementation(kotlin("stdlib-jdk8", "1.6.21"))
     "com.github.LlamaLad7:MixinExtras:0.0.9".let {
         implementation(it)
         annotationProcessor(it)
         compileOnly(it)
     }
+
 
     if (platform.isLegacyForge) {
         // You need this because otherwise you can't use mixin 0.8.x on 1.8.9
@@ -129,7 +131,7 @@ tasks.processResources {
 }
 
 tasks {
-    named<ShadowJar>("shadowJar") {
+    "shadowJar"(ShadowJar::class){
         configurations = listOf(shadowMe, shadowMeMod)
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         relocate("com.llamalad7.mixinextras", "dev.myosyn.euphoria.mixinextras")
@@ -139,26 +141,18 @@ tasks {
         relocate("gg.essential.universalcraft", "dev.shuuyu.euphoria.universalcraft")
     }
 
-    named<RemapJarTask>("remapJar") {
+    "remapJar"(RemapJarTask::class) {
         archiveBaseName.set("Euphoria-${platform.mcVersion}-${platform.loaderStr}-${project.version}")
     }
-    /*
-    "jar"(Jar::class) {
-        if (platform.isFabric) {
-            exclude("mcmod.info", "mods.toml")
-        }
-        if (platform.isLegacyForge) {
-            exclude("fabric.mod.json", "mods.toml")
-        }
-        manifest {
-            attributes (
-                mapOf(
-                    "Main-Class" to ""
-                )
-            )
+
+    "compileKotlin"(KotlinCompile::class) {
+        kotlinOptions {
+            kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+            kotlinOptions.freeCompilerArgs += "-jvm-default=all-compatibility"
+            kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.contracts.ExperimentalContracts"
+            kotlinOptions.freeCompilerArgs += "-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
+            kotlinOptions.freeCompilerArgs += "-opt-in=kotlinx.serialization.InternalSerializationApi"
         }
     }
-
-     */
 }
 
