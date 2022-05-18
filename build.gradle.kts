@@ -69,14 +69,18 @@ val shadowMeMod: Configuration by configurations.creating {
 
 dependencies {
     shadowMeMod("gg.essential:loader-fabric:1.0.0")
-    shadowMe("dev.cbyrne:kdiscordipc:655c6fb")
+    //shadowMe("dev.cbyrne:kdiscordipc:655c6fb") //What a shame
     implementation(kotlin("stdlib-jdk8", "1.6.21"))
     "com.github.LlamaLad7:MixinExtras:0.0.9".let {
         implementation(it)
         annotationProcessor(it)
         compileOnly(it)
     }
-
+    shadowMe(platform("io.ktor:ktor-bom:2.0.1"))
+    shadowMe("io.ktor:ktor-serialization-kotlinx-json-jvm")
+    shadowMe("io.ktor:ktor-client-core-jvm")
+    shadowMe("io.ktor:ktor-client-cio-jvm")
+    shadowMe("io.ktor:ktor-client-content-negotiation-jvm")
 
     if (platform.isLegacyForge) {
         // You need this because otherwise you can't use mixin 0.8.x on 1.8.9
@@ -134,11 +138,12 @@ tasks {
     "shadowJar"(ShadowJar::class){
         configurations = listOf(shadowMe, shadowMeMod)
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-        relocate("com.llamalad7.mixinextras", "dev.myosyn.euphoria.mixinextras")
+        relocate("com.llamalad7.mixinextras", "dev.shuuyu.euphoria.mixinextras")
 
         relocate("gg.essential.vigilance", "dev.shuuyu.euphoria.vigilance")
         relocate("gg.essential.elementa", "dev.shuuyu.euphoria.elementa")
         relocate("gg.essential.universalcraft", "dev.shuuyu.euphoria.universalcraft")
+
     }
 
     "remapJar"(RemapJarTask::class) {
