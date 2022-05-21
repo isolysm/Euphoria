@@ -71,7 +71,7 @@ dependencies {
     shadowMeMod("gg.essential:loader-fabric:1.0.0")
     //shadowMe("dev.cbyrne:kdiscordipc:655c6fb") //What a shame
     implementation(kotlin("stdlib-jdk8", "1.6.21"))
-    "com.github.LlamaLad7:MixinExtras:0.0.9".let {
+    "com.github.LlamaLad7:MixinExtras:0.0.10".let {
         implementation(it)
         annotationProcessor(it)
         compileOnly(it)
@@ -153,7 +153,6 @@ tasks {
     "compileKotlin"(KotlinCompile::class) {
         kotlinOptions {
             kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
-            kotlinOptions.freeCompilerArgs += "-jvm-default=all-compatibility"
             kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.contracts.ExperimentalContracts"
             kotlinOptions.freeCompilerArgs += "-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
             kotlinOptions.freeCompilerArgs += "-opt-in=kotlinx.serialization.InternalSerializationApi"
