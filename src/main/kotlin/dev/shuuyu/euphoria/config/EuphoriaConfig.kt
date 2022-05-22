@@ -6,7 +6,7 @@ import gg.essential.vigilance.data.PropertyType
 import java.io.File
 
 @Suppress("Unused")
-object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.toml"), "Euphoria~") {
+object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "Euphoria~") {
 
     @Property(
         type = PropertyType.SWITCH,
