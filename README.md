@@ -5,8 +5,8 @@ This is a FABRIC mod. Please do not add this to Forge, as you will crash, regard
 
 ## Stuff we use
 
-~~* [Blossom](https://github.com/isolysm/blossom) is the GUI we use.~~ Not implemented yet
-~~* riBBon is the auto-updater task for the mod (This is closed source as of March 21st.)~~ Not implemented yet.
+* ~~[Blossom](https://github.com/isolysm/blossom) is the GUI we use.~~ Not implemented yet
+* ~~riBBon is the auto-updater task for the mod (This is closed source as of March 21st.)~~ Not implemented yet.
 * Preprocessor is used to develop Minecraft versions 1.8.9, 1.12.2, and 1.18.x. 
   * However, we do not provide 1.8.9 and 1.12.2. We will only work on it if we want to kill some time, and either way, you can find our features in other mods.
   * 1.8.9 and 1.12.2 intentionally have LESS features due to mods conflicting with them.
