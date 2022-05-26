@@ -12,7 +12,7 @@ object UpdateVerifier {
 
     fun checkUpdate() {
         CoroutineScope(Dispatchers.IO + CoroutineName("EuphoriaUpdaterMoment")).launch {
-            val fetchLatestVersion =
+            // val fetchLatestVersion =
             val currentVersionTag = Euphoria.VERSION
 
             val currentVersion = UpdateVersion(currentVersionTag)
