@@ -13,7 +13,7 @@ import java.io.File
 
 
 class Euphoria : ModInitializer {
-    override fun onInitializeClient() {
+    fun onInitializeClient() {
 
         println("Initializing all libraries, please do not stop the processes.")
         Vigilance.initialize()
@@ -37,5 +37,9 @@ class Euphoria : ModInitializer {
         const val VERSION = EuphoriaVersion
         val ModDirectory = File(EuphoriaModDirectory)
         var gui: UScreen? = null
+    }
+
+    override fun onInitialize() {
+        TODO("Not yet implemented")
     }
 }
