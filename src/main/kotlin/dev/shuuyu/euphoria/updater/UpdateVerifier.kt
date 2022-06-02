@@ -1,7 +1,5 @@
 package dev.shuuyu.euphoria.updater
 
-import dev.shuuyu.euphoria.Euphoria
-import io.ktor.websocket.*
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -12,18 +10,11 @@ object UpdateVerifier {
 
     fun checkUpdate() {
         CoroutineScope(Dispatchers.IO + CoroutineName("EuphoriaUpdaterMoment")).launch {
-            val fetchLatestVersion =
-            val currentVersionTag = Euphoria.VERSION
 
-            val currentVersion = UpdateVersion(currentVersionTag)
-            val latestVersion = UpdateVersion()
-            if (currentVersion < latestVersion) {
-                
-            }
         }
     }
 
-    class UpdateVersion {
+    class UpdateVersion(currentVersionTag: String) {
 
     }
     enum class UpdateCandidate(val suffix: String) {
@@ -31,5 +22,19 @@ object UpdateVerifier {
         RELEASECANDIDATE("RC"),
         PRERELEASE("PRE"),
         DEVELOPERBUILD("DEVBUILD")
+    }
+}
+
+class UpdateVersion(private val versionString: String): Comparable<UpdateVersion> {
+    companion object {
+        val regex = Regex("^(?<version>[\\d.]+)-?(?<type>\\D+)?(?<typever>\\d+\\.?\\d*)?\$")
+    }
+
+    private val matched by lazy {
+        regex.find(versionString)
+    }
+
+    override fun compareTo(other: UpdateVersion): Int {
+        TODO("Not yet implemented")
     }
 }

@@ -49,6 +49,23 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
     var enableHoveringTimestamp = true
 
     @Property(
+        type = PropertyType.SWITCH, name = "Screenshot Upscaling",
+        description = "Upscales the resolution of the screenshot." +
+            "This is an Experimental feature! You will experience bugs.",
+        category = "Screenshots",
+    )
+    var ScreenshotUpscaler = true
+
+    @Property(
+        type = PropertyType.SELECTOR, name = "Screenshot Resolutuion",
+        description = "Sets the resolution of the screenshot to the specified value." +
+        "Larger resolutions will make it so your screenshots take longer to process!",
+        category = "Screenshot",
+        options = ["1280x720","1920x1080", "2560x1440", "2880x1620", "3840x2160"]
+    )
+    var ScreenshotResolution = 0
+
+    @Property(
         type = PropertyType.SWITCH,
         name = "Preview Screenshot",
         description = "Displays a picture of the screenshot you've taken.",
@@ -63,7 +80,7 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
             "This will overwrite the one provided by Mojang themselves.",
         category = "Extras"
     )
-    var enableDiscordRPC = true
+    var enableDiscordRPC = false
 
     @Property(
         type = PropertyType.SWITCH,
@@ -79,7 +96,7 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
         name = "AutoUpdater",
         description = "Sets the version that you want the updater to update to.",
         category = "Updater",
-        options = ["Pre-Release", "Release", "Release-Candidate"]
+        options = ["None", "Pre-Release", "Release", "Release-Candidate"]
     )
     var setAutoUpdater = 0
 

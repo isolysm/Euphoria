@@ -6,7 +6,9 @@
     "ChatMixins",
     "chat.CompressChatMixins",
     "chat.CopyChatMixins",
-    "chat.SmoothChatMixins"
+    "chat.SmoothChatMixins",
+    "screenshots.RenderScreenshotMixin",
+    "screenshots.ScreenshotUpdaterMixin"
   ],
   "verbose": true,
   "client": []

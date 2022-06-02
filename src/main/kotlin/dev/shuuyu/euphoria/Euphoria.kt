@@ -13,7 +13,8 @@ import java.io.File
 
 
 class Euphoria : ModInitializer {
-    override fun onInitialize() {
+    override fun onInitializeClient() {
+
         println("Initializing all libraries, please do not stop the processes.")
         Vigilance.initialize()
         EuphoriaConfig.preload()

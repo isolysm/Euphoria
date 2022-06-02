@@ -68,7 +68,6 @@ val shadowMeMod: Configuration by configurations.creating {
 }
 
 dependencies {
-    shadowMeMod("gg.essential:loader-fabric:1.0.0")
     //shadowMe("dev.cbyrne:kdiscordipc:655c6fb") //What a shame
     implementation(kotlin("stdlib-jdk8", "1.6.21"))
     "com.github.LlamaLad7:MixinExtras:0.0.10".let {
@@ -89,6 +88,7 @@ dependencies {
             // We need to exclude this so we can use Collision Handling ASM.
             exclude(module = "asm")
         }
+
     }
 
     if (platform.isFabric) {
