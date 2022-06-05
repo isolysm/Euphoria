@@ -5,7 +5,6 @@ import gg.essential.vigilance.data.Property
 import gg.essential.vigilance.data.PropertyType
 import java.io.File
 
-@Suppress("Unused")
 object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "Euphoria~") {
 
     @Property(
@@ -17,8 +16,22 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
     var enableEuphoriaVersion = true
 
     @Property(
+        type = PropertyType.SWITCH, name = "Infinite Chat",
+        description = "Sets the chat length to be infinite.",
+        category = "Chat"
+    )
+    var enableInfChat = true
+
+    @Property(
+        type = PropertyType.SWITCH, name = "Chat History",
+        description = "Doesn't clear chat history from other servers.",
+        category = "Chat"
+    )
+    var enableChatHistory = true
+
+    @Property(
         type = PropertyType.SWITCH,
-        name = "Enable Smooth Chat",
+        name = "Smooth Chat",
         description = "Enables the smooth chat feature.",
         category = "Chat"
     )
@@ -26,7 +39,7 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
 
     @Property(
         type = PropertyType.SWITCH,
-        name = "Enable Chat Compression",
+        name = "Chat Compression",
         description = "Compresses all duplicate chat methods.",
         category = "Chat"
     )
@@ -34,7 +47,7 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
 
     @Property(
         type = PropertyType.SWITCH,
-        name = "Enable Copy Chat",
+        name = "Copy Chat",
         description = "Enables the copy chat feature." +
             "You can copy a message by pressing CTRL and clicking on the message.",
         category = "Chat"
@@ -54,7 +67,7 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
             "This is an Experimental feature! You will experience bugs.",
         category = "Screenshots",
     )
-    var ScreenshotUpscaler = true
+    var ScreenshotUpscaler = false
 
     @Property(
         type = PropertyType.SELECTOR, name = "Screenshot Resolutuion",
@@ -66,8 +79,7 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
     var ScreenshotResolution = 0
 
     @Property(
-        type = PropertyType.SWITCH,
-        name = "Preview Screenshot",
+        type = PropertyType.SWITCH, name = "Preview Screenshot",
         description = "Displays a picture of the screenshot you've taken.",
         category = "Screenshots"
     )

@@ -4,7 +4,9 @@
   "refmap": "mixins.euphoria.refmap.json",
   "mixins": [
     "ChatMixins",
-    "chat.CompressChatMixins",
+    "MinecraftClientMixin_ScreenshotRenderer",
+    "chat.ChatHudMixin_CompactChat",
+    "chat.ChatHudMixin_InfChat",
     "chat.CopyChatMixins",
     "chat.SmoothChatMixins",
     "screenshots.RenderScreenshotMixin",

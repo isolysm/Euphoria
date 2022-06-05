@@ -19,5 +19,5 @@ You can download Euphoria from the following locations:
 * [GitHub Releases Page](https://github.com/isolysm/Euphoria/releases) (There is currently no releases.)
 
 ## People behind the Euphoria project:
-* [euphorxa / yujin](https://github.com/euphorxa) - Lead Developer & Owner
+* [shuuyu / yujin](https://github.com/euphorxa) - Lead Developer & Owner
 * [vispin](https://github.com/vispin) - Developer
