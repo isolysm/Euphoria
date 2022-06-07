@@ -21,6 +21,7 @@ import java.io.File
 
 
 class Euphoria : ClientModInitializer {
+
     override fun onInitializeClient() {
         println("Initializing all libraries, please do not stop the processes.")
         Vigilance.initialize()
