@@ -70,7 +70,7 @@ val shadowMeMod: Configuration by configurations.creating {
 dependencies {
     //shadowMe("dev.cbyrne:kdiscordipc:655c6fb") //What a shame
     implementation(kotlin("stdlib-jdk8", "1.6.21"))
-    "com.github.LlamaLad7:MixinExtras:0.0.10".let {
+    "com.github.LlamaLad7:MixinExtras:0.0.11".let {
         implementation(it)
         annotationProcessor(it)
         compileOnly(it)
