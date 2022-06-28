@@ -75,7 +75,7 @@ dependencies {
         annotationProcessor(it)
         compileOnly(it)
     }
-    shadowMe(platform("io.ktor:ktor-bom:2.0.2"))
+    shadowMe(platform("io.ktor:ktor-bom:2.0.3"))
     shadowMe("io.ktor:ktor-serialization-kotlinx-json-jvm")
     shadowMe("io.ktor:ktor-client-core-jvm")
     shadowMe("io.ktor:ktor-client-cio-jvm")
