@@ -5,18 +5,13 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2" apply false
     id("gg.essential.multi-version.root") version "0.1.11"
     id("com.modrinth.minotaur") version "2.4.0" apply false
-    // id("com.replaymod.preprocess") version "73d8bed"
-    // id("fabric-loom") version "0.12-SNAPSHOT" apply false
 }
 
-// configurations.register("compileClasspath")
-
-//The versions we are trying to preprocess to
 preprocess {
-    // Latest Fabric (RELEASE) version
     val fabric11802 = createNode("1.18.2-fabric", 11802, "yarn")
     val fabric11801 = createNode("1.18.1-fabric", 11801, "yarn")
+    val fabric11900 = createNode("1.19-fabric", 11900, "yarn")
 
-    // Conjunction points
-    fabric11801.link(fabric11802, file("versions/1.18.1-1.18.2-mappings.txt"))
+    fabric11900.link(fabric11802)
+    fabric11802.link(fabric11801)
 }

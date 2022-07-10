@@ -24,12 +24,12 @@ repositories {
     mavenLocal()
     mavenCentral()
     gradlePluginPortal()
-    maven(url = "https://repo.essential.gg/repository/maven-public")
-    maven(url = "https://repo.essential.gg/repository/maven-releases")
-    maven(url = "https://repo.sk1er.club/repository/maven-public/")
-    maven(url = "https://repo.sk1er.club/repository/maven-releases/")
-    maven(url = "https://maven.terraformersmc.com/releases/")
-    maven(url = "https://jitpack.io")
+    maven("https://repo.essential.gg/repository/maven-public")
+    maven("https://repo.essential.gg/repository/maven-releases")
+    maven("https://repo.sk1er.club/repository/maven-public/")
+    maven("https://repo.sk1er.club/repository/maven-releases/")
+    maven("https://maven.terraformersmc.com/releases/")
+    maven("https://jitpack.io")
 }
 
 preprocess {
@@ -68,7 +68,6 @@ val shadowMeMod: Configuration by configurations.creating {
 }
 
 dependencies {
-    //shadowMe("dev.cbyrne:kdiscordipc:655c6fb") //What a shame
     implementation(kotlin("stdlib-jdk8", "1.6.21"))
     "com.github.LlamaLad7:MixinExtras:0.0.11".let {
         implementation(it)
@@ -99,7 +98,7 @@ dependencies {
             11701 -> "0.38.1+1.17"
             11801 -> "0.46.4+1.18"
             11802 -> "0.51.1+1.18.2"
-            // 11900 -> "0.51.2+1.19"
+            11900 -> "0.51.2+1.19"
             else -> throw GradleException("Invalid platform present: $platform")
         }
 
@@ -160,4 +159,3 @@ tasks {
         }
     }
 }
-
