@@ -1,21 +1,16 @@
 package dev.shuuyu.euphoria
 
-import ModID
-import ModID.EuphoriaModDirectory
 import ModID.EuphoriaModID
 import ModID.EuphoriaVersion
 import dev.shuuyu.euphoria.config.EuphoriaConfig
-import gg.essential.universal.UChat
 import gg.essential.universal.UMinecraft
 import gg.essential.universal.UScreen
 import gg.essential.vigilance.Vigilance
-import io.netty.handler.codec.http.websocketx.extensions.WebSocketExtensionUtil
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import net.fabricmc.api.ClientModInitializer
-import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import java.io.File
 
