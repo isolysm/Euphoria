@@ -81,13 +81,9 @@ dependencies {
     shadowMe("io.ktor:ktor-client-content-negotiation-jvm")
 
     if (platform.isLegacyForge) {
-        // You need this because otherwise you can't use mixin 0.8.x on 1.8.9
-        // Also I didn't want to force this but oh well.
         compileOnly("gg.essential:essential-${platform}:2666") {
-            // We need to exclude this so we can use Collision Handling ASM.
             exclude(module = "asm")
         }
-
     }
 
     if (platform.isFabric) {
@@ -117,14 +113,11 @@ dependencies {
         }
 
         modImplementation("net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}")
-        modImplementation("net.fabricmc:fabric-language-kotlin:1.8.1+kotlin.1.7.0")
-        modImplementation("com.terraformersmc:modmenu:3.1.+")
-        shadowMeMod(include("gg.essential:universalcraft-1.18.1-${platform.loaderStr}:213+pull-27")!!)
-        shadowMeMod("gg.essential:vigilance-1.18.1-${platform.loaderStr}:215") {
-            exclude(module = "kotlin-reflect")
-            exclude(module = "kotlin-stdlib-jdk8")
-            exclude(group = "net.fabricmc")
-        }
+        shadowMeMod("net.fabricmc:fabric-language-kotlin:1.8.1+kotlin.1.7.0")
+        shadowMeMod("com.terraformersmc:modmenu:4.0.0")
+        shadowMeMod(include("gg.essential:universalcraft-1.18.1-${platform.loaderStr}:217")!!)
+        modImplementation(include("gg.essential:elementa-1.18.1-${platform.loaderStr}:526")!!)
+        shadowMeMod(include("gg.essential:vigilance-1.18.1-${platform.loaderStr}:235+pull-55")!!)
     }
 }
 

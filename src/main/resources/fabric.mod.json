@@ -1,21 +1,40 @@
+
 {
   "schemaVersion": 1,
   "id": "euphoria",
   "version": "${version}",
   "environment": "*",
+  "description": "A generalized mod that provides convenience for the end user.",
   "authors": [
-    "Myosyn",
-    "yujin/shuuyu",
-    "Vispin"
+    "Myosyn"
   ],
-  "license": "Attribution-NonCommercial-ShareAlike 4.0 International",
-  "depends": {
-    "fabricloader": "*"
+  "contact": {
+    "sources": "https://github.com/shuuyu/EuphoricRPC",
+    "issues": "https://github.com/shuuyu/EuphoricRPC/issues"
   },
-  "description": "A generalized mod that does multiple tasks. It's fast!",
-  "custom": {
-    "modmenu": {
-      "badges": [ "mod" ]
-    }
+  "license": "Creative Common Attribution-NonCommercial-ShareAlike 4.0 International",
+
+  "entrypoints": {
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "live.shuuyu.swan.SwanCore"
+      }
+    ],
+    "modmenu": [
+      "dev.shuuyu.euphoria.config.EuphoriaModMenuImplementation"
+    ]
+  },
+
+  "mixins": [
+    "mixins.euphoria.refmap.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric-language-kotlin": "1.8.1+kotlin.1.7.0",
+    "minecraft": "1.19.x",
+    "java": "17",
+    "modmenu": "*"
   }
 }

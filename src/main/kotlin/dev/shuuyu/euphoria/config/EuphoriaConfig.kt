@@ -85,14 +85,20 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
     )
     var enablePreviewScreenshot = true
 
-    @Property(
-        type = PropertyType.SWITCH,
-        name = "Discord RPC",
-        description = "Displays our custom Discord RPC." +
-            "This will overwrite the one provided by Mojang themselves.",
-        category = "Extras"
+    @Property (
+        type = PropertyType.SWITCH, name = "Upload Screenshot",
+        description = "Uploads the screenshot to the platform of your choosing.",
+        category = "Screenshots"
     )
-    var enableDiscordRPC = false
+    var uploadScreenshot = true
+
+    @Property (
+        type = PropertyType.SELECTOR, name = "Screenshot Upload Provider",
+        description = "Sets your preferred platform of uploading (Either Imgur or Asella).",
+        category = "Screenshots",
+        options = ["Imgur", "Ascella"]
+    )
+    var screenshotUploaderProvider = 0
 
     @Property(
         type = PropertyType.SWITCH,
