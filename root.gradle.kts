@@ -4,7 +4,7 @@ plugins {
 
     id("com.github.johnrengelman.shadow") version "7.1.2" apply false
     id("gg.essential.multi-version.root") version "0.1.11"
-    id("com.modrinth.minotaur") version "2.4.1" apply false
+    id("com.modrinth.minotaur") version "2.4.2" apply false
 }
 
 preprocess {
