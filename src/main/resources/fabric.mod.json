@@ -9,8 +9,8 @@
     "Myosyn"
   ],
   "contact": {
-    "sources": "https://github.com/shuuyu/EuphoricRPC",
-    "issues": "https://github.com/shuuyu/EuphoricRPC/issues"
+    "sources": "https://github.com/isolysm/Euphoria",
+    "issues": "https://github.com/isolysm/Euphoria/issues"
   },
   "license": "Creative Common Attribution-NonCommercial-ShareAlike 4.0 International",
 
@@ -18,11 +18,11 @@
     "client": [
       {
         "adapter": "kotlin",
-        "value": "live.shuuyu.swan.SwanCore"
+        "value": "dev.shuuyu.euphoria.Euphoria"
       }
     ],
     "modmenu": [
-      "dev.shuuyu.euphoria.config.EuphoriaModMenuImplementation"
+      "dev.shuuyu.euphoria.modmenu.EuphoriaModMenuImplementation"
     ]
   },
 

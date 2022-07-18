@@ -98,7 +98,7 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
         category = "Screenshots",
         options = ["Imgur", "Ascella"]
     )
-    var screenshotUploaderProvider = 0
+    var screenshotUploaderProvider = 1
 
     @Property(
         type = PropertyType.SWITCH,
