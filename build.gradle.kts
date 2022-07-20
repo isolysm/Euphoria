@@ -113,7 +113,7 @@ dependencies {
         }
 
         modImplementation("net.fabricmc.fabric-api:fabric-api:${fabricApiVersion}")
-        shadowMeMod("net.fabricmc:fabric-language-kotlin:1.8.1+kotlin.1.7.0")
+        shadowMeMod("net.fabricmc:fabric-language-kotlin:1.8.2+kotlin.1.7.10")
         shadowMeMod("com.terraformersmc:modmenu:4.0.0")
         shadowMeMod(include("gg.essential:universalcraft-1.18.1-${platform.loaderStr}:217")!!)
         modImplementation(include("gg.essential:elementa-1.18.1-${platform.loaderStr}:526")!!)
