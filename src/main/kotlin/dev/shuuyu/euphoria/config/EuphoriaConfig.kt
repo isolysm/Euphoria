@@ -5,7 +5,7 @@ import gg.essential.vigilance.data.Property
 import gg.essential.vigilance.data.PropertyType
 import java.io.File
 
-object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "Euphoria~") {
+object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.toml"), "Euphoria~") {
 
     @Property(
         type = PropertyType.SWITCH,
@@ -85,6 +85,15 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
     )
     var enablePreviewScreenshot = true
 
+    @Property(
+        type = PropertyType.SELECTOR, name = "Preview Screenshot Position",
+        description = "Sets where the animation for the screenshot will take place" +
+            "Yes, the wording is a bit off, let me know how to fix it.",
+        category = "Screenshot",
+        options = ["Bottom-Right", "Bottom-Left", "Top-Right", "Top-Left"]
+    )
+    var screenShotPosition = 1
+
     @Property (
         type = PropertyType.SWITCH, name = "Upload Screenshot",
         description = "Uploads the screenshot to the platform of your choosing.",
@@ -99,31 +108,6 @@ object EuphoriaConfig : Vigilant(File("./config/euphoriaConfigurations.json"), "
         options = ["Imgur", "Ascella"]
     )
     var screenshotUploaderProvider = 1
-
-    @Property(
-        type = PropertyType.SWITCH,
-        name = "Enable Autoupdater",
-        description = "Enables the autoupdater, which will autoupdate this mod whenever there is a new update." +
-            "This feature is experimental! You will encounter many bugs.",
-        category = "Updater"
-    )
-    var enableAutoUpdater = false
-
-    @Property(
-        type = PropertyType.SELECTOR,
-        name = "AutoUpdater",
-        description = "Sets the version that you want the updater to update to.",
-        category = "Updater",
-        options = ["None", "Pre-Release", "Release", "Release-Candidate"]
-    )
-    var setAutoUpdater = 0
-
-    @Property(
-        type = PropertyType.SWITCH, name = "Update Notification",
-        description = "Shows updates for when a new Euphoria update is present.",
-        category = "Updater"
-    )
-    var allowUpdaterNotification = true
 
     init {
         initialize()
