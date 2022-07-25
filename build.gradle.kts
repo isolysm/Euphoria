@@ -69,7 +69,7 @@ val shadowMeMod: Configuration by configurations.creating {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8", "1.6.21"))
-    "com.github.LlamaLad7:MixinExtras:0.0.11".let {
+    "com.github.LlamaLad7:MixinExtras:0.0.12".let {
         implementation(it)
         annotationProcessor(it)
         compileOnly(it)
